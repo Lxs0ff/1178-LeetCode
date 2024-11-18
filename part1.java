@@ -5,18 +5,13 @@ class Solution {
             int count = 0;
             for (int w = 0; w < words.length;w++) {
                 List<Character> chars = new ArrayList<>();
+                Boolean condition = true;
                 for (int i = 0; i < words[w].length();i++) {
-                    if (!chars.contains(words[w].charAt(i))){
-                        chars.add(words[w].charAt(i));
-                    }
+                   if (puzzles[p].indexOf(words[w].charAt(i)) == -1) {
+                        condition = false;
+                   }
                 }
-                String puzzle = puzzles[p];
-                for (int q = 0; q < puzzle.length(); q++) {
-                    if (chars.contains(puzzle.charAt(q))){
-                        chars.remove(chars.indexOf(puzzle.charAt(q)));
-                    }
-                }
-                if (chars.size() == 0 && words[w].indexOf(puzzles[p].charAt(0)) != -1) {
+                if (condition && words[w].indexOf(puzzles[p].charAt(0)) != -1) {
                     count++;
                 }
             }
