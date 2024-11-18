@@ -1,16 +1,17 @@
 class Solution {
     public List<Integer> findNumOfValidWords(String[] words, String[] puzzles) {
         List<Integer> ans = new ArrayList<>();
-        for (int p = 0; p < puzzles.length;p++) {
+        Boolean condition = true;
+        for (String p: puzzles) {
             int count = 0;
-            for (int w = 0; w < words.length;w++) {
-                Boolean condition = true;
-                for (int i = 0; i < words[w].length();i++) {
-                   if (puzzles[p].indexOf(words[w].charAt(i)) == -1) {
+            for (String w: words) {
+                condition = true;
+                for (char i : w.toCharArray()) {
+                   if (p.indexOf(i) == -1) {
                         condition = false;
                    }
                 }
-                if (condition && words[w].indexOf(puzzles[p].charAt(0)) != -1) {
+                if (condition && w.indexOf(p.charAt(0)) != -1) {
                     count++;
                 }
             }
